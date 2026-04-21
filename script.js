@@ -10,6 +10,11 @@ const translations = {
         'lang.pt': 'Português',
         'lang.en': 'English',
         'lang.es': 'Español',
+        'settings.open': 'Abrir configurações',
+        'settings.language': 'Idioma',
+        'settings.theme': 'Tema',
+        'theme.enableDark': 'Ativar modo escuro',
+        'theme.enableLight': 'Ativar modo claro',
         'hero.highlight': 'Excelência Jurídica',
         'hero.title': 'Protegendo seus direitos com experiência e dedicação',
         'hero.description': 'Há mais de xx anos oferecendo soluções jurídicas personalizadas e eficientes para clientes em todo o Brasil.',
@@ -77,6 +82,11 @@ const translations = {
         'lang.pt': 'Portuguese',
         'lang.en': 'English',
         'lang.es': 'Spanish',
+        'settings.open': 'Open settings',
+        'settings.language': 'Language',
+        'settings.theme': 'Theme',
+        'theme.enableDark': 'Enable dark mode',
+        'theme.enableLight': 'Enable light mode',
         'hero.highlight': 'Legal Excellence',
         'hero.title': 'Protecting your rights with experience and dedication',
         'hero.description': 'For over xx years, we have provided personalized and efficient legal solutions for clients across Brazil.',
@@ -144,6 +154,11 @@ const translations = {
         'lang.pt': 'Portugués',
         'lang.en': 'Inglés',
         'lang.es': 'Español',
+        'settings.open': 'Abrir configuración',
+        'settings.language': 'Idioma',
+        'settings.theme': 'Tema',
+        'theme.enableDark': 'Activar modo oscuro',
+        'theme.enableLight': 'Activar modo claro',
         'hero.highlight': 'Excelencia Jurídica',
         'hero.title': 'Protegiendo sus derechos con experiencia y dedicación',
         'hero.description': 'Desde hace más de xx años ofrecemos soluciones jurídicas personalizadas y eficientes para clientes en todo Brasil.',
@@ -204,6 +219,8 @@ const translations = {
 
 const defaultLanguage = 'pt';
 let currentLanguage = localStorage.getItem('site-language') || defaultLanguage;
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+let currentTheme = localStorage.getItem('site-theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (event) {
@@ -231,10 +248,52 @@ if (navbar) {
     });
 }
 
-const languageSwitcher = document.getElementById('languageSwitcher');
-const languageToggle = document.getElementById('languageToggle');
-const languageLabel = document.getElementById('languageLabel');
+const settingsPanel = document.getElementById('settingsPanel');
+const settingsToggle = document.getElementById('settingsToggle');
+const settingsToggleText = document.getElementById('settingsToggleText');
 const languageOptions = document.querySelectorAll('.language-option');
+const themeToggle = document.getElementById('themeToggle');
+const themeToggleIcon = document.getElementById('themeToggleIcon');
+const themeToggleText = document.getElementById('themeToggleText');
+
+function updateSettingsToggleLabel(language) {
+    if (!settingsToggle || !settingsToggleText) {
+        return;
+    }
+
+    const dictionary = translations[language] || translations[defaultLanguage];
+    const label = dictionary['settings.open'];
+    settingsToggle.setAttribute('aria-label', label);
+    settingsToggle.setAttribute('title', label);
+    settingsToggleText.textContent = label;
+}
+
+function updateThemeToggle(theme) {
+    if (!themeToggle || !themeToggleIcon || !themeToggleText) {
+        return;
+    }
+
+    const dictionary = translations[currentLanguage] || translations[defaultLanguage];
+    const isDarkTheme = theme === 'dark';
+    const label = isDarkTheme ? dictionary['theme.enableLight'] : dictionary['theme.enableDark'];
+
+    themeToggle.setAttribute('aria-pressed', String(isDarkTheme));
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
+    themeToggleText.textContent = label;
+
+    themeToggleIcon.classList.toggle('fa-moon', !isDarkTheme);
+    themeToggleIcon.classList.toggle('fa-sun', isDarkTheme);
+}
+
+function applyTheme(theme) {
+    const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
+
+    document.body.classList.toggle('dark-theme', resolvedTheme === 'dark');
+    currentTheme = resolvedTheme;
+    localStorage.setItem('site-theme', resolvedTheme);
+    updateThemeToggle(resolvedTheme);
+}
 
 function translatePage(language) {
     const dictionary = translations[language] || translations[defaultLanguage];
@@ -270,21 +329,22 @@ function translatePage(language) {
         option.classList.toggle('active', option.dataset.lang === language);
     });
 
-    languageLabel.textContent = language.toUpperCase();
     currentLanguage = language;
     localStorage.setItem('site-language', language);
+    updateSettingsToggleLabel(language);
+    updateThemeToggle(currentTheme);
 }
 
-if (languageToggle && languageSwitcher) {
-    languageToggle.addEventListener('click', () => {
-        const isOpen = languageSwitcher.classList.toggle('open');
-        languageToggle.setAttribute('aria-expanded', String(isOpen));
+if (settingsToggle && settingsPanel) {
+    settingsToggle.addEventListener('click', () => {
+        const isOpen = settingsPanel.classList.toggle('open');
+        settingsToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
     document.addEventListener('click', (event) => {
-        if (!languageSwitcher.contains(event.target)) {
-            languageSwitcher.classList.remove('open');
-            languageToggle.setAttribute('aria-expanded', 'false');
+        if (!settingsPanel.contains(event.target)) {
+            settingsPanel.classList.remove('open');
+            settingsToggle.setAttribute('aria-expanded', 'false');
         }
     });
 }
@@ -292,10 +352,18 @@ if (languageToggle && languageSwitcher) {
 languageOptions.forEach((option) => {
     option.addEventListener('click', () => {
         translatePage(option.dataset.lang);
-        languageSwitcher.classList.remove('open');
-        languageToggle.setAttribute('aria-expanded', 'false');
+        if (settingsPanel && settingsToggle) {
+            settingsPanel.classList.remove('open');
+            settingsToggle.setAttribute('aria-expanded', 'false');
+        }
     });
 });
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+}
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
@@ -341,3 +409,4 @@ stats.forEach((stat) => {
 });
 
 translatePage(currentLanguage);
+applyTheme(currentTheme);
