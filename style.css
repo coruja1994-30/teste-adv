@@ -221,7 +221,7 @@ body {
 .settings-panel {
     position: fixed;
     right: max(24px, env(safe-area-inset-right));
-    bottom: max(24px, calc(env(safe-area-inset-bottom) + 24px));
+    bottom: max(110px, calc(env(safe-area-inset-bottom) + 110px));
     z-index: 1100;
     display: flex;
     flex-direction: column;
@@ -1341,8 +1341,10 @@ body.dark-theme .settings-toggle {
     }
 
     .settings-panel {
-        right: max(16px, env(safe-area-inset-right));
+        left: max(16px, env(safe-area-inset-left));
+        right: auto;
         bottom: max(16px, calc(env(safe-area-inset-bottom) + 16px));
+        align-items: flex-start;
     }
 
     .settings-toggle {
@@ -1351,7 +1353,7 @@ body.dark-theme .settings-toggle {
     }
 
     .settings-menu {
-        width: min(210px, calc(100vw - 20px));
+        width: min(210px, calc(100vw - 88px));
         padding: 8px;
     }
 
@@ -1586,8 +1588,10 @@ body.dark-theme .settings-toggle {
     }
 
     .settings-panel {
-        right: max(12px, env(safe-area-inset-right));
+        left: max(12px, env(safe-area-inset-left));
+        right: auto;
         bottom: max(12px, calc(env(safe-area-inset-bottom) + 12px));
+        align-items: flex-start;
     }
 
     .settings-toggle {
