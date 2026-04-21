@@ -13,8 +13,11 @@ const translations = {
         'settings.open': 'Abrir configurações',
         'settings.language': 'Idioma',
         'settings.theme': 'Tema',
+        'settings.accessibility': 'Acessibilidade',
         'theme.enableDark': 'Ativar modo escuro',
         'theme.enableLight': 'Ativar modo claro',
+        'font.increase': 'Aumentar fonte',
+        'font.normal': 'Voltar fonte normal',
         'hero.highlight': 'Excelência Jurídica',
         'hero.title': 'Protegendo seus direitos com experiência e dedicação',
         'hero.description': 'Há mais de xx anos oferecendo soluções jurídicas personalizadas e eficientes para clientes em todo o Brasil.',
@@ -85,8 +88,11 @@ const translations = {
         'settings.open': 'Open settings',
         'settings.language': 'Language',
         'settings.theme': 'Theme',
+        'settings.accessibility': 'Accessibility',
         'theme.enableDark': 'Enable dark mode',
         'theme.enableLight': 'Enable light mode',
+        'font.increase': 'Increase font size',
+        'font.normal': 'Return to normal font size',
         'hero.highlight': 'Legal Excellence',
         'hero.title': 'Protecting your rights with experience and dedication',
         'hero.description': 'For over xx years, we have provided personalized and efficient legal solutions for clients across Brazil.',
@@ -157,8 +163,11 @@ const translations = {
         'settings.open': 'Abrir configuración',
         'settings.language': 'Idioma',
         'settings.theme': 'Tema',
+        'settings.accessibility': 'Accesibilidad',
         'theme.enableDark': 'Activar modo oscuro',
         'theme.enableLight': 'Activar modo claro',
+        'font.increase': 'Aumentar fuente',
+        'font.normal': 'Volver al tamaño normal',
         'hero.highlight': 'Excelencia Jurídica',
         'hero.title': 'Protegiendo sus derechos con experiencia y dedicación',
         'hero.description': 'Desde hace más de xx años ofrecemos soluciones jurídicas personalizadas y eficientes para clientes en todo Brasil.',
@@ -221,6 +230,7 @@ const defaultLanguage = 'pt';
 let currentLanguage = localStorage.getItem('site-language') || defaultLanguage;
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 let currentTheme = localStorage.getItem('site-theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+let currentFontSize = localStorage.getItem('site-font-size') || 'normal';
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (event) {
@@ -255,6 +265,23 @@ const languageOptions = document.querySelectorAll('.language-option');
 const themeToggle = document.getElementById('themeToggle');
 const themeToggleIcon = document.getElementById('themeToggleIcon');
 const themeToggleText = document.getElementById('themeToggleText');
+const fontSizeToggle = document.getElementById('fontSizeToggle');
+const fontSizeToggleText = document.getElementById('fontSizeToggleText');
+
+function updateFontSizeToggle(fontSize) {
+    if (!fontSizeToggle || !fontSizeToggleText) {
+        return;
+    }
+
+    const dictionary = translations[currentLanguage] || translations[defaultLanguage];
+    const isLarge = fontSize === 'large';
+    const label = isLarge ? dictionary['font.normal'] : dictionary['font.increase'];
+
+    fontSizeToggle.setAttribute('aria-pressed', String(isLarge));
+    fontSizeToggle.setAttribute('aria-label', label);
+    fontSizeToggle.setAttribute('title', label);
+    fontSizeToggleText.textContent = label;
+}
 
 function updateSettingsToggleLabel(language) {
     if (!settingsToggle || !settingsToggleText) {
@@ -295,6 +322,15 @@ function applyTheme(theme) {
     updateThemeToggle(resolvedTheme);
 }
 
+function applyFontSize(fontSize) {
+    const resolvedFontSize = fontSize === 'large' ? 'large' : 'normal';
+
+    document.body.classList.toggle('font-large', resolvedFontSize === 'large');
+    currentFontSize = resolvedFontSize;
+    localStorage.setItem('site-font-size', resolvedFontSize);
+    updateFontSizeToggle(resolvedFontSize);
+}
+
 function translatePage(language) {
     const dictionary = translations[language] || translations[defaultLanguage];
 
@@ -333,6 +369,7 @@ function translatePage(language) {
     localStorage.setItem('site-language', language);
     updateSettingsToggleLabel(language);
     updateThemeToggle(currentTheme);
+    updateFontSizeToggle(currentFontSize);
 }
 
 if (settingsToggle && settingsPanel) {
@@ -362,6 +399,12 @@ languageOptions.forEach((option) => {
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+}
+
+if (fontSizeToggle) {
+    fontSizeToggle.addEventListener('click', () => {
+        applyFontSize(currentFontSize === 'large' ? 'normal' : 'large');
     });
 }
 
@@ -410,3 +453,4 @@ stats.forEach((stat) => {
 
 translatePage(currentLanguage);
 applyTheme(currentTheme);
+applyFontSize(currentFontSize);

@@ -329,6 +329,83 @@ body {
     color: #8c6d1f;
 }
 
+.font-option {
+    border: 1px solid rgba(140, 109, 31, 0.14);
+    background: #fff;
+    color: #1e1e1e;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.font-option:hover {
+    border-color: #8c6d1f;
+    color: #8c6d1f;
+}
+
+body.font-large {
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+body.font-large .nav-menu li a,
+body.font-large .hero-text p,
+body.font-large .section-description,
+body.font-large .sobre-text p,
+body.font-large .area-card p,
+body.font-large .membro-desc,
+body.font-large .info-item p,
+body.font-large .footer-col p,
+body.font-large .footer-col ul li a,
+body.font-large .language-option,
+body.font-large .theme-option,
+body.font-large .font-option,
+body.font-large .btn-primary,
+body.font-large .btn-secondary,
+body.font-large .btn-enviar,
+body.font-large .form-group input,
+body.font-large .form-group textarea {
+    font-size: 1.04em;
+}
+
+body.font-large .hero-text h1 {
+    font-size: clamp(3rem, 4.8vw, 4rem);
+    line-height: 1.2;
+}
+
+body.font-large .section-title,
+body.font-large .sobre-text h2 {
+    font-size: clamp(2.4rem, 3.8vw, 3.2rem);
+    line-height: 1.2;
+}
+
+body.font-large .section-subtitle,
+body.font-large .contato-info h3,
+body.font-large .area-card h3,
+body.font-large .membro-info h3,
+body.font-large .stat-label,
+body.font-large .settings-label {
+    font-size: 1.12em;
+}
+
+body.font-large .stat-number {
+    font-size: clamp(3rem, 4vw, 3.6rem);
+}
+
+body.font-large .btn-primary,
+body.font-large .btn-secondary,
+body.font-large .btn-enviar {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
 .container {
     max-width: 1300px;
     margin: 0 auto;
@@ -1146,7 +1223,18 @@ body.dark-theme .theme-option {
     border-color: rgba(215, 166, 73, 0.22);
 }
 
+body.dark-theme .font-option {
+    background: #111a26;
+    color: #e5edf6;
+    border-color: rgba(215, 166, 73, 0.22);
+}
+
 body.dark-theme .theme-option:hover {
+    color: #f4c56f;
+    border-color: #d7a649;
+}
+
+body.dark-theme .font-option:hover {
     color: #f4c56f;
     border-color: #d7a649;
 }
@@ -1422,6 +1510,39 @@ body.dark-theme .settings-toggle {
         justify-content: center;
         flex-wrap: wrap;
     }
+
+    body.font-large {
+        font-size: 16px;
+    }
+
+    body.font-large .hero-text h1 {
+        font-size: clamp(2.4rem, 8vw, 3rem);
+    }
+
+    body.font-large .section-title,
+    body.font-large .sobre-text h2 {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+    }
+
+    body.font-large .nav-menu li a,
+    body.font-large .hero-text p,
+    body.font-large .section-description,
+    body.font-large .sobre-text p,
+    body.font-large .info-item p,
+    body.font-large .membro-desc,
+    body.font-large .footer-col p,
+    body.font-large .footer-col ul li a,
+    body.font-large .btn-primary,
+    body.font-large .btn-secondary,
+    body.font-large .btn-enviar,
+    body.font-large .form-group input,
+    body.font-large .form-group textarea {
+        font-size: 1em;
+    }
+
+    body.font-large .stat-number {
+        font-size: clamp(2.4rem, 8vw, 3rem);
+    }
 }
 
 @media (max-width: 480px) {
@@ -1485,6 +1606,11 @@ body.dark-theme .settings-toggle {
         font-size: 13px;
     }
 
+    .font-option {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
     .nav-menu {
         gap: 6px 8px;
     }
@@ -1492,5 +1618,15 @@ body.dark-theme .settings-toggle {
     .nav-menu li a {
         font-size: 14px;
         padding: 8px;
+    }
+
+    body.font-large .hero-text h1,
+    body.font-large .section-title,
+    body.font-large .sobre-text h2 {
+        line-height: 1.18;
+    }
+
+    body.font-large .settings-menu {
+        width: min(230px, calc(100vw - 20px));
     }
 }
