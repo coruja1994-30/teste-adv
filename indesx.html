@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Advogados | Escritório de Advocacia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Barra de Navegação Superior -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo"><span data-i18n="brand.name">Advogados</span></a>
+            <ul class="nav-menu">
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#areas" data-i18n="nav.areas">Áreas de Atuação</a></li>
+                <li><a href="#sobre" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="#equipe" data-i18n="nav.team">Equipe</a></li>
+                <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="language-switcher" id="languageSwitcher">
+        <button type="button" class="language-toggle" id="languageToggle" aria-expanded="false" aria-controls="languageMenu">
+            <i class="fas fa-globe"></i>
+            <span id="languageLabel">PT</span>
+        </button>
+        <div class="language-menu" id="languageMenu">
+            <button type="button" class="language-option active" data-lang="pt" data-i18n="lang.pt">Português</button>
+            <button type="button" class="language-option" data-lang="en" data-i18n="lang.en">English</button>
+            <button type="button" class="language-option" data-lang="es" data-i18n="lang.es">Español</button>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <span class="highlight hero-highlight" data-i18n="hero.highlight">Excelência Jurídica</span>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 data-i18n="hero.title">Protegendo seus direitos com experiência e dedicação</h1>
+                        <p data-i18n="hero.description">Há mais de xx anos oferecendo soluções jurídicas personalizadas e eficientes para clientes em todo o Brasil.</p>
+                        <div class="hero-buttons">
+                            <a href="#contato" class="btn-primary"><span data-i18n="hero.primaryCta">Agendar Consulta</span> <i class="fas fa-arrow-right"></i></a>
+                            <a href="#sobre" class="btn-secondary" data-i18n="hero.secondaryCta">Conheça o Escritório</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Escritório de Advocacia Moderno" data-i18n-alt="hero.imageAlt">
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">xxx+</div>
+                        <div class="stat-label" data-i18n="stats.cases">Casos Resolvidos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">xx+</div>
+                        <div class="stat-label" data-i18n="stats.experience">Anos de Experiência</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">xx+</div>
+                        <div class="stat-label" data-i18n="stats.lawyers">Advogados Especialistas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Areas de Atuação -->
+        <section id="areas" class="areas">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle" data-i18n="areas.subtitle">Nossa Expertise</div>
+                    <h2 class="section-title" data-i18n="areas.title">Áreas de Atuação</h2>
+                    <p class="section-description" data-i18n="areas.description">Atendimento especializado nas principais áreas do direito</p>
+                </div>
+                
+                <div class="areas-grid">
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-gavel"></i></div>
+                        <h3 data-i18n="areas.civil.title">Direito Civil</h3>
+                        <p data-i18n="areas.civil.description">Contratos, responsabilidade civil, direito do consumidor e obrigações</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3 data-i18n="areas.business.title">Direito Empresarial</h3>
+                        <p data-i18n="areas.business.description">Consultoria empresarial, contratos comerciais e recuperação judicial</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3 data-i18n="areas.business2.title">Direito Empresarial</h3>
+                        <p data-i18n="areas.business2.description">Consultoria empresarial, contratos comerciais e recuperação judicial</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-family"></i></div>
+                        <h3 data-i18n="areas.family.title">Direito de Família</h3>
+                        <p data-i18n="areas.family.description">Divórcio, pensão alimentícia, guarda e inventário</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-briefcase-medical"></i></div>
+                        <h3 data-i18n="areas.labor.title">Direito Trabalhista</h3>
+                        <p data-i18n="areas.labor.description">Reclamações trabalhistas, acordos e consultoria preventiva</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h3 data-i18n="areas.tax.title">Direito Tributário</h3>
+                        <p data-i18n="areas.tax.description">Planejamento tributário, contencioso fiscal e consultoria</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 data-i18n="areas.criminal.title">Direito Penal</h3>
+                        <p data-i18n="areas.criminal.description">Defesa criminal, habeas corpus e execução penal</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-file-contract"></i></div>
+                        <h3 data-i18n="areas.social.title">Direito Previdenciário</h3>
+                        <p data-i18n="areas.social.description">Aposentadoria, pensões e benefícios do INSS</p>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon"><i class="fas fa-city"></i></div>
+                        <h3 data-i18n="areas.realEstate.title">Direito Imobiliário</h3>
+                        <p data-i18n="areas.realEstate.description">Compra e venda de imóveis, locação e usucapião</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Section -->
+        <section id="sobre" class="sobre">
+            <div class="container">
+                <div class="sobre-content">
+                    <div class="sobre-text">
+                        <div class="section-subtitle" data-i18n="about.subtitle">Nossa História</div>
+                        <h2 data-i18n="about.title">Compromisso com a justiça e excelência no atendimento</h2>
+                        <p data-i18n="about.description1">Fundado em 2003, o xxx Advogados nasceu com a missão de oferecer serviços jurídicos de alta qualidade, aliando conhecimento técnico aprofundado a um atendimento humanizado e personalizado.</p>
+                                                <p data-i18n="about.description2">Fundado em 2025, o escritório nasceu com a missão de oferecer serviços jurídicos de alta qualidade, aliando conhecimento técnico aprofundado a um atendimento humanizado e personalizado.</p>
+                                            <a href="#" class="logo"><span data-i18n="brand.name">Advogados</span></a>
+                        <p data-i18n="about.description3">Ao longo desses anos, construímos uma trajetória sólida, baseada na ética, transparência e no compromisso inabalável com os interesses de nossos clientes. Nossa equipe multidisciplinar trabalha de forma integrada para garantir soluções completas e eficientes.</p>
+                        <div class="signature">XXX</div>
+                    </div>
+                    <div class="sobre-image">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sobre o Escritório" data-i18n-alt="about.imageAlt">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipe Section -->
+        <section id="equipe" class="equipe">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle" data-i18n="team.subtitle">Nossa Equipe</div>
+                    <h2 class="section-title" data-i18n="team.title">Advogados Especialistas</h2>
+                    <p class="section-description" data-i18n="team.description">Profissionais altamente qualificados dedicados ao seu caso</p>
+                </div>
+                
+                <div class="equipe-grid">
+                    <div class="membro-card">
+                        <img class="membro-image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="XXX">
+                        <div class="membro-info">
+                            <h3>XXX</h3>
+                            <div class="membro-cargo">XXX</div>
+                            <p class="membro-desc">XXX</p>
+                            <div class="membro-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="membro-card">
+                        <img class="membro-image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="XXX">
+                        <div class="membro-info">
+                            <h3>XXX</h3>
+                            <div class="membro-cargo">XXX</div>
+                            <p class="membro-desc">XXX</p>
+                            <div class="membro-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="membro-card">
+                        <img class="membro-image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="XXX">
+                        <div class="membro-info">
+                            <h3>XXX</h3>
+                            <div class="membro-cargo">XXX</div>
+                            <p class="membro-desc">XXX</p>
+                            <div class="membro-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato Section -->
+        <section id="contato" class="contato">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle" data-i18n="contact.subtitle">Entre em Contato</div>
+                    <h2 class="section-title" data-i18n="contact.title">Vamos Conversar Sobre o Seu Caso</h2>
+                    <p class="section-description" data-i18n="contact.description">Estamos prontos para ajudar você com soluções jurídicas eficientes</p>
+                </div>
+                
+                <div class="contato-grid">
+                    <div class="contato-info">
+                        <h3 data-i18n="contact.infoTitle">Informações de Contato</h3>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>xxxxxxxxxxxxxxxxxxxxxxx</p>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p>(xx) xxxx-xxxx</p>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>contato@mlgadvogados.com.br</p>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <p data-i18n="contact.hours">Segunda a Sexta: 9h às 19h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contato-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Seu nome completo" data-i18n-placeholder="contact.form.name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Seu e-mail" data-i18n-placeholder="contact.form.email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Seu telefone" data-i18n-placeholder="contact.form.phone">
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="5" placeholder="Como podemos ajudar?" data-i18n-placeholder="contact.form.message"></textarea>
+                            </div>
+                            <button type="submit" class="btn-enviar"><span data-i18n="contact.form.submit">Enviar Mensagem</span> <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="#" class="logo"> <span data-i18n="brand.name">Advogados</span></a>
+                    <p data-i18n="footer.description">Excelência jurídica com atendimento personalizado e soluções eficientes para seus direitos.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.pages">Páginas</h4>
+                    <ul>
+                        <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#areas" data-i18n="nav.areas">Áreas de Atuação</a></li>
+                        <li><a href="#sobre" data-i18n="nav.about">Sobre</a></li>
+                        <li><a href="#equipe" data-i18n="nav.team">Equipe</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.areas">Áreas</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="areas.civil.title">Direito Civil</a></li>
+                        <li><a href="#" data-i18n="areas.business.title">Direito Empresarial</a></li>
+                        <li><a href="#" data-i18n="areas.labor.title">Direito Trabalhista</a></li>
+                        <li><a href="#" data-i18n="areas.tax.title">Direito Tributário</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.social">Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Advogados. Todos os direitos reservados.</p>
+                        <!-- Projeto criado por Leonardo - 2026 -->
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
