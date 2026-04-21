@@ -208,8 +208,8 @@ body {
 
 .language-switcher {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: max(24px, env(safe-area-inset-right));
+    bottom: max(24px, calc(env(safe-area-inset-bottom) + 24px));
     z-index: 1100;
     display: flex;
     flex-direction: column;
@@ -220,6 +220,7 @@ body {
 .language-toggle {
     width: 58px;
     height: 58px;
+    padding: 0;
     border: none;
     border-radius: 999px;
     background: linear-gradient(135deg, #171717 0%, #8c6d1f 100%);
@@ -233,6 +234,8 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     font-size: 15px;
     font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .language-toggle:hover {
@@ -244,9 +247,14 @@ body {
     font-size: 16px;
 }
 
+#languageLabel {
+    min-width: 2ch;
+    text-align: center;
+}
+
 .language-menu {
     display: none;
-    min-width: 152px;
+    width: min(152px, calc(100vw - 24px));
     padding: 10px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.96);
@@ -982,10 +990,13 @@ footer {
 
     .nav-menu {
         width: 100%;
-        gap: 12px;
-        overflow-x: auto;
-        white-space: nowrap;
+        max-width: 100%;
+        gap: 8px 12px;
+        overflow-x: visible;
+        white-space: normal;
         padding-bottom: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .nav-menu::-webkit-scrollbar {
@@ -993,14 +1004,16 @@ footer {
     }
 
     .nav-menu li {
-        flex: 0 0 auto;
+        flex: 0 1 auto;
+        min-width: 0;
     }
 
     .nav-menu li a {
         display: inline-flex;
         align-items: center;
         min-height: 40px;
-        padding: 8px 0;
+        padding: 8px 10px;
+        text-align: center;
     }
 
     .nav-links {
@@ -1020,17 +1033,18 @@ footer {
     }
 
     .language-switcher {
-        right: 16px;
-        bottom: 16px;
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, calc(env(safe-area-inset-bottom) + 16px));
     }
 
     .language-toggle {
         width: 54px;
         height: 54px;
+        padding: 0;
     }
 
     .language-menu {
-        min-width: 138px;
+        width: min(138px, calc(100vw - 20px));
         padding: 8px;
     }
 
@@ -1189,7 +1203,7 @@ footer {
         justify-content: center;
         flex-wrap: wrap;
     }
-    
+}
 
 @media (max-width: 480px) {
     .logo {
@@ -1232,13 +1246,14 @@ footer {
     }
 
     .language-switcher {
-        right: 12px;
-        bottom: 12px;
+        right: max(12px, env(safe-area-inset-right));
+        bottom: max(12px, calc(env(safe-area-inset-bottom) + 12px));
     }
 
     .language-toggle {
         width: 50px;
         height: 50px;
+        padding: 0;
         font-size: 13px;
     }
 
@@ -1246,8 +1261,13 @@ footer {
         padding: 9px 12px;
         font-size: 13px;
     }
-}
-    .section-title {
-        font-size: 32px;
+
+    .nav-menu {
+        gap: 6px 8px;
+    }
+
+    .nav-menu li a {
+        font-size: 14px;
+        padding: 8px;
     }
 }
